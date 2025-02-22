@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
-import { retrieveKundaliSummary, retrieveBirthDetails, getPanchangData } from "./utils";
+import { retrieveKundaliSummary, retrieveBirthDetails, getPanchangData } from "../lib/utils";
 
 import { DashboardEntry, DashboardEntrySchema } from "../../types";
 import { OpenAI } from "openai";

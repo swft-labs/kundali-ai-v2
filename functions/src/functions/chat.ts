@@ -2,7 +2,7 @@ import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
 import { OpenAI } from "openai";
 import { pipeDataStreamToResponse, streamText } from "ai";
-import { retrieveUserData, retrieveKundaliSummary } from "./utils";
+import { retrieveUserData, retrieveKundaliSummary } from "../lib/utils";
 
 const db = admin.firestore();
 const openai = new OpenAI({ apiKey: "YOUR_OPENAI_API_KEY" });
