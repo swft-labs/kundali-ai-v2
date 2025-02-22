@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "expo-ai-chatbot-lite",
-    "slug": "expo-ai-chatbot-lite",
-    "scheme": "lite.expoaichatbot.com",
+    "name": "Kundali AI",
+    "slug": "kundali-ai",
+    "scheme": "lite.kundali.com",
     "userInterfaceStyle": "automatic",
     "orientation": "portrait",
     "version": "0.0.1",
@@ -51,10 +51,10 @@
       "typedRoutes": true
     },
     "android": {
-      "package": "com.expoaichatbot.lite"
+      "package": "com.kundali.lite"
     },
     "ios": {
-      "bundleIdentifier": "com.expoaichatbot.lite",
+      "bundleIdentifier": "com.kundali.lite",
       "supportsTablet": true
     },
     "runtimeVersion": {
@@ -72,5 +72,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     }
+  
   }
 }

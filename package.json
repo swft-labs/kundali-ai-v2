@@ -1,5 +1,5 @@
 {
-  "name": "ai-summaries",
+  "name": "kundali-ai",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
@@ -9,19 +9,8 @@
     "ios": "expo run:ios",
     "ios:device": "expo run:ios -d",
     "web": "expo start --web",
-    "start:dev-client": "bun expo:prebuild && bun expo start --dev-client",
-    "expo:prebuild": "expo prebuild --skip-dependency-update react-native,react",
-    "expo:prebuild:android:clean": "npx expo prebuild -p android --clean",
-    "expo:prebuild:ios:clean": "npx expo prebuild -p ios --clean",
-    "eas:build:dev:simulator:ios:local": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:simulator --platform ios --local",
-    "eas:build:dev:emulator:android": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:emulator --platform android",
-    "eas:build:dev:android": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development --platform android",
-    "eas:build:staging:android": "cross-env NODE_ENV=staging APP_ENV=staging eas build --profile staging --platform android",
-    "eas:build:dev:simulator:ios": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:simulator --platform ios",
-    "eas:build:dev:ios": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development --platform ios",
-    "eas:build:dev:device:ios": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:device --platform ios",
-    "eas:build:dev:device:android": "cross-env NODE_ENV=development APP_ENV=development eas build --profile development:device --platform android",
-    "eas:build:staging:ios": "cross-env NODE_ENV=staging APP_ENV=staging eas build --profile staging --platform ios"
+
+    "start:dev-client": "bun expo:prebuild && bun expo start --dev-client"
   },
   "dependencies": {
     "@ai-sdk/openai": "^0.0.72",
