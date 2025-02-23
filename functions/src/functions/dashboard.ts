@@ -73,6 +73,7 @@ function isUserTime2AM(userTimezone: string): boolean {
 
 
 export const dashboardOutlook = v2.pubsub
+  //@ts-ignore
   .schedule("every hour") // Runs every hour to check for users in 2 AM local time
   .timeZone("UTC")
   .onRun(async () => {
