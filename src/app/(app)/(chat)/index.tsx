@@ -21,7 +21,7 @@ type WeatherResult = {
   weatherCode: string;
   humidity: number;
   wind: number;
-};
+}; // Use for Gen UI tools in the future
 
 const HomePage = () => {
   const {

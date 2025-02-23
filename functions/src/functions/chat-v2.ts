@@ -29,7 +29,7 @@ export const getChatResponse = v2.https.onRequest(async (request, response) => {
     // Send an initial response containing the user message ID
     response.write(JSON.stringify({
       type: 'user-message-id',
-      content: userMessageId,
+      content: userMessageId, 
     }) + "\n");
 
 
