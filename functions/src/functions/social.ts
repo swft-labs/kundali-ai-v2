@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
 import { callAstrologyAPI } from "../lib/utils";
-import { SocialProfile, Compatibility } from "../../types";
+import { SocialProfile, Compatibility } from "../types";
 
 const db = admin.firestore();
 

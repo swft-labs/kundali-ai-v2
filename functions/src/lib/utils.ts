@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import moment from "moment-timezone";
-import { User } from "../../types";
+import { User } from "../types";
 import axios from "axios";
 
 export async function retrieveUserData(db: admin.firestore.Firestore, uid: string) {

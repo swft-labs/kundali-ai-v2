@@ -1,7 +1,7 @@
 import { OpenAI } from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
 import { callAstrologyAPI, retrieveBirthDetails } from "../lib/utils";
-import { BirthDetails, Kundali, KundaliSchema } from "../../types";
+import { BirthDetails, Kundali, KundaliSchema } from "../types";
 import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
 

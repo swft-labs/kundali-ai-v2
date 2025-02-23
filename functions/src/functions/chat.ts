@@ -1,83 +1,68 @@
-import * as admin from "firebase-admin";
+// import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
-import { OpenAI } from "openai";
-import { pipeDataStreamToResponse, streamText } from "ai";
-import { retrieveUserData, retrieveKundaliSummary } from "../lib/utils";
 
-const db = admin.firestore();
-const openai = new OpenAI({ apiKey: "YOUR_OPENAI_API_KEY" });
+// const db = admin.firestore();
+
+import { convertToCoreMessages, streamText } from 'ai';
+import { models, customModel } from "../lib/models";
+
 
 export const getChatResponse = v2.https.onRequest(async (request, response) => {
+  response.setHeader("Content-Type", "application/json");
+
   try {
-    const { userId, userMessage } = request.body;
-    if (!userId || !userMessage) {
-      response.status(400).send({ error: "User ID and message are required" });
-      return;
-    }
+    console.log(">> Request received");
 
-    // Fetch user data
-    const userData = await retrieveUserData(db, userId);
-    if (!userData) {
-      response.status(404).send({ error: "User not found" });
-      return;
-    }
+    // Extract messages and modelId from the request body
+    const { messages, modelId = 'gpt-4' } = request.body;
+    console.log(">> Messages:", messages);
 
-    // Fetch Kundali summary
-    const kundaliSummary = await retrieveKundaliSummary(db, userId) || "No Kundali data available.";
+    // Select the requested model or default to the first available model
+    const model = models.find((m) => m.id === modelId) || models[0];
 
-    // Fetch long-term journal memories
-    const memoriesDoc = await db.collection("journal_memories").doc(userId).get();
-    const longTermMemories = memoriesDoc.exists ? memoriesDoc.data()?.memories : {};
+    // Convert messages into the format required for processing
+    const coreMessages = convertToCoreMessages(messages);
 
-    // Fetch last 5 chat messages for context
-    const chatMessagesSnapshot = await db
-      .collection("chats")
-      .doc(userId)
-      .collection("messages")
-      .orderBy("createdAt", "desc")
-      .limit(5)
-      .get();
+    // Generate a unique user message ID
+    const userMessageId = generateUUID();
 
-    const chatHistory = chatMessagesSnapshot.docs.reverse().map(doc => ({
-      role: doc.data().sender === "user" ? "user" : "assistant",
-      content: doc.data().text,
-    }));
+    // Send an initial response containing the user message ID
+    response.write(JSON.stringify({
+      type: 'user-message-id',
+      content: userMessageId, 
+    }) + "\n");
 
-    // Construct system prompt
-    const systemPrompt = `
-      You are an AI expert in Vedic astrology, Kundali insights, and personalized life guidance.
-      Use the following information to provide insightful and spiritually wise responses:
-      
-      - Kundali Summary: ${kundaliSummary}
-      - Long-Term Memories: ${JSON.stringify(longTermMemories)}
-      - User's Past Conversations: Integrated for continuity.
-      
-      Keep responses personalized, spiritual, and helpful.
-    `;
 
-    pipeDataStreamToResponse(response, {
-      execute: async (dataStreamWriter) => {
-        dataStreamWriter.writeData("Initializing response...");
+    const systemPrompt = 'You are a helpful assistant.';
 
-        const result = streamText({
-          model: openai("gpt-4o-mini"),
-          maxTokens: 1024,
-          system: systemPrompt,
-          messages: [
-            { role: "system", content: systemPrompt },
-            ...chatHistory.map(message => ({ role: message.role as "system" | "user" | "assistant" | "data", content: message.content })),
-            { role: "user", content: userMessage },
-          ],
-        });
 
-        result.mergeIntoDataStream(dataStreamWriter);
-      },
-      onError: (error) => {
-        return error instanceof Error ? error.message : String(error);
-      },
+    // Stream AI response
+    const result = streamText({
+      model: customModel(model.apiIdentifier),
+      system: systemPrompt,
+      messages: coreMessages,
+      maxSteps: 5,
     });
 
+    // Simulate a data stream object for handling streaming responses
+    const dataStream = {
+      writeData: (data: any) => {
+        response.write(JSON.stringify(data) + "\n");
+      },
+    };
+
+    // Merge AI response into the data stream
+    // @ts-ignore
+    await result.mergeIntoDataStream(dataStream);
+
+    // End the response once all data has been streamed
+    response.end();
   } catch (error) {
-    response.status(500).send({ error: "Internal server error" });
+    console.error("API Error:", error);
+    response.status(500).json({ error: "Failed to generate response" });
   }
 });
+function generateUUID() {
+    throw new Error("Function not implemented.");
+}
+
