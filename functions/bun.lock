@@ -6,7 +6,7 @@
       "dependencies": {
         "@ai-sdk/openai": "^1.1.12",
         "@google-cloud/functions-framework": "^3.4.5",
-        "@google-cloud/storage": "^7.15.0",
+        "@google-cloud/storage": "^7.15.2",
         "ai": "^4.1.41",
         "axios": "^1.7.9",
         "firebase-admin": "^12.6.0",

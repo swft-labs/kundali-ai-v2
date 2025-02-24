@@ -1,0 +1,1030 @@
+[debug] [2025-02-24T17:14:48.873Z] ----------------------------------------------------------------------
+[debug] [2025-02-24T17:14:48.876Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start --only functions
+[debug] [2025-02-24T17:14:48.876Z] CLI Version:   13.31.2
+[debug] [2025-02-24T17:14:48.876Z] Platform:      darwin
+[debug] [2025-02-24T17:14:48.876Z] Node Version:  v20.15.1
+[debug] [2025-02-24T17:14:48.876Z] Time:          Mon Feb 24 2025 09:14:48 GMT-0800 (Pacific Standard Time)
+[debug] [2025-02-24T17:14:48.876Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-24T17:14:48.979Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-24T17:14:48.980Z] > authorizing via signed-in user (abhay@swiftlabs.so)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[warn] ⚠  logging: Logging Emulator unable to start on port 4500, starting on 4501 instead. {"metadata":{"emulator":{"name":"logging"},"message":"Logging Emulator unable to start on port 4500, starting on 4501 instead."}}
+[debug] [2025-02-24T17:14:49.259Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:14:49.259Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-02-24T17:14:49.261Z] [hub] writing locator at /var/folders/s6/7vgpcrzj2m1bmh2xg5m4zzh00000gn/T/hub-kundali-ai-app.json
+[debug] [2025-02-24T17:14:49.434Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:14:49.434Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:14:49.434Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:14:49.434Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-02-24T17:14:49.436Z] defaultcredentials: writing to file /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json
+[debug] [2025-02-24T17:14:49.437Z] Setting GAC to /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json"}}
+[debug] [2025-02-24T17:14:49.437Z] Checked if tokens are valid: true, expires at: 1740420080044
+[debug] [2025-02-24T17:14:49.437Z] Checked if tokens are valid: true, expires at: 1740420080044
+[debug] [2025-02-24T17:14:49.438Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig [none]
+[debug] [2025-02-24T17:14:49.866Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig 200
+[debug] [2025-02-24T17:14:49.867Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig {"projectId":"kundali-ai-app","storageBucket":"kundali-ai-app.firebasestorage.app"}
+[info] i  functions: Watching "/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions\" for Cloud Functions..."}}
+[debug] [2025-02-24T17:14:49.912Z] Validating nodejs source
+[debug] [2025-02-24T17:14:50.260Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:14:50.261Z] Building nodejs source
+[debug] [2025-02-24T17:14:50.261Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:14:50.263Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:14:50.266Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8731
+
+[debug] [2025-02-24T17:14:50.435Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] ✔  functions[us-central1-getChatResponse]: http function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/getChatResponse). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/getChatResponse)."}}
+[debug] [2025-02-24T17:14:55.461Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4501
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-02-24T17:15:06.497Z] [work-queue] {"queuedWork":["/kundali-ai-app/us-central1/getChatResponse-2025-02-24T17:15:06.497Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-24T17:15:06.497Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/kundali-ai-app/us-central1/getChatResponse-2025-02-24T17:15:06.497Z"],"workRunningCount":1}
+[debug] [2025-02-24T17:15:06.498Z] Accepted request GET /kundali-ai-app/us-central1/getChatResponse --> us-central1-getChatResponse
+[debug] [2025-02-24T17:15:06.503Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-02-24T17:15:06.504Z] [functions] Got req.url=/kundali-ai-app/us-central1/getChatResponse, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/kundali-ai-app/us-central1/getChatResponse, mapping to path=/"}}
+[debug] [2025-02-24T17:15:06.508Z] [worker-pool] addWorker(us-central1-getChatResponse) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-getChatResponse)"}}
+[debug] [2025-02-24T17:15:06.508Z] [worker-pool] Adding worker with key us-central1-getChatResponse, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-getChatResponse, total=1"}}
+[debug] [2025-02-24T17:15:07.125Z] [runtime-status] [14729] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-02-24T17:15:07.127Z] [runtime-status] [14729] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.2\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-02-24T17:15:07.127Z] [runtime-status] [14729] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-02-24T17:15:07.127Z] [runtime-status] [14729] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.2\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-02-24T17:15:07.258Z] [runtime-status] [14729] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-02-24T17:15:07.258Z] [runtime-status] [14729] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.3.2","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.3.2\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js\"}}"}}
+[debug] [2025-02-24T17:15:07.258Z] [runtime-status] [14729] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.2\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-02-24T17:15:07.261Z] [runtime-status] [14729] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-02-24T17:15:07.261Z] [runtime-status] [14729] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.3.2","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.3.2\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-02-24T17:15:07.262Z] [runtime-status] [14729] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2025-02-24T17:15:07.288Z] [runtime-status] [14729] initializeApp(DEFAULT) {"storageBucket":"kundali-ai-app.firebasestorage.app","projectId":"kundali-ai-app"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] initializeApp(DEFAULT) {\"storageBucket\":\"kundali-ai-app.firebasestorage.app\",\"projectId\":\"kundali-ai-app\"}"}}
+[debug] [2025-02-24T17:15:07.290Z] [runtime-status] [14729] Functions runtime initialized. {"cwd":"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions","node_version":"20.15.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Functions runtime initialized. {\"cwd\":\"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions\",\"node_version\":\"20.15.1\"}"}}
+[debug] [2025-02-24T17:15:07.290Z] [runtime-status] [14729] Listening to port: /var/folders/s6/7vgpcrzj2m1bmh2xg5m4zzh00000gn/T/fire_emu_5b8dda0d3282cde8.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[runtime-status] [14729] Listening to port: /var/folders/s6/7vgpcrzj2m1bmh2xg5m4zzh00000gn/T/fire_emu_5b8dda0d3282cde8.sock"}}
+[debug] [2025-02-24T17:15:07.317Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: IDLE"}}
+[debug] [2025-02-24T17:15:07.317Z] [worker-pool] submitRequest(triggerId=us-central1-getChatResponse) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-getChatResponse)"}}
+[info] i  functions: Beginning execution of "us-central1-getChatResponse" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Beginning execution of \"us-central1-getChatResponse\""}}
+[debug] [2025-02-24T17:15:07.318Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: BUSY"}}
+[info] >  >> Request received {"user":">> Request received","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m >> Request received"}}
+[info] >  >> Messages: undefined {"user":">> Messages: undefined","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m >> Messages: undefined"}}
+[info] >  API Error: TypeError: Cannot read properties of undefined (reading 'length') {"user":"API Error: TypeError: Cannot read properties of undefined (reading 'length')","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m API Error: TypeError: Cannot read properties of undefined (reading 'length')"}}
+[info] >      at convertToCoreMessages (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/ai/dist/index.js:1605:32) {"user":"    at convertToCoreMessages (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/ai/dist/index.js:1605:32)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at convertToCoreMessages (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/ai/dist/index.js:1605:32)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/lib/functions/chat.js:42:61 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/lib/functions/chat.js:42:61","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/lib/functions/chat.js:42:61"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:88:29 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:88:29","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:88:29"}}
+[info] >      at cors (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:188:7) {"user":"    at cors (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:188:7)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at cors (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:188:7)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:224:17 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:224:17","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:224:17"}}
+[info] >      at originCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:214:15) {"user":"    at originCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:214:15)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at originCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:214:15)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:219:13 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:219:13","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:219:13"}}
+[info] >      at optionsCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:199:9) {"user":"    at optionsCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:199:9)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at optionsCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:199:9)"}}
+[info] >      at corsMiddleware (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:204:7) {"user":"    at corsMiddleware (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:204:7)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at corsMiddleware (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:204:7)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:87:17 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:87:17","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:87:17"}}
+[debug] [2025-02-24T17:15:07.322Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-getChatResponse" in 3.804084ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finished \"us-central1-getChatResponse\" in 3.804084ms"}}
+[debug] [2025-02-24T17:15:07.322Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: IDLE"}}
+[debug] [2025-02-24T17:15:07.322Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-02-24T17:15:07.322Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-02-24T17:15:07.322Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-24T17:15:07.435Z] Functions emulator received unknown request at path /favicon.ico
+[debug] [2025-02-24T17:15:30.714Z] [work-queue] {"queuedWork":["/kundali-ai-app/us-central1/getChatResponse-2025-02-24T17:15:30.714Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-24T17:15:30.715Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/kundali-ai-app/us-central1/getChatResponse-2025-02-24T17:15:30.714Z"],"workRunningCount":1}
+[debug] [2025-02-24T17:15:30.715Z] Accepted request GET /kundali-ai-app/us-central1/getChatResponse --> us-central1-getChatResponse
+[debug] [2025-02-24T17:15:30.717Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-02-24T17:15:30.717Z] [functions] Got req.url=/kundali-ai-app/us-central1/getChatResponse, mapping to path=/ {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/kundali-ai-app/us-central1/getChatResponse, mapping to path=/"}}
+[debug] [2025-02-24T17:15:30.717Z] [worker-pool] submitRequest(triggerId=us-central1-getChatResponse) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-getChatResponse)"}}
+[info] i  functions: Beginning execution of "us-central1-getChatResponse" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Beginning execution of \"us-central1-getChatResponse\""}}
+[debug] [2025-02-24T17:15:30.718Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: BUSY"}}
+[info] >  >> Request received {"user":">> Request received","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m >> Request received"}}
+[info] >  >> Messages: undefined {"user":">> Messages: undefined","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m >> Messages: undefined"}}
+[info] >  API Error: TypeError: Cannot read properties of undefined (reading 'length') {"user":"API Error: TypeError: Cannot read properties of undefined (reading 'length')","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m API Error: TypeError: Cannot read properties of undefined (reading 'length')"}}
+[info] >      at convertToCoreMessages (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/ai/dist/index.js:1605:32) {"user":"    at convertToCoreMessages (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/ai/dist/index.js:1605:32)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at convertToCoreMessages (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/ai/dist/index.js:1605:32)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/lib/functions/chat.js:42:61 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/lib/functions/chat.js:42:61","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/lib/functions/chat.js:42:61"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:88:29 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:88:29","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:88:29"}}
+[info] >      at cors (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:188:7) {"user":"    at cors (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:188:7)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at cors (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:188:7)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:224:17 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:224:17","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:224:17"}}
+[info] >      at originCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:214:15) {"user":"    at originCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:214:15)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at originCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:214:15)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:219:13 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:219:13","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:219:13"}}
+[info] >      at optionsCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:199:9) {"user":"    at optionsCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:199:9)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at optionsCallback (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:199:9)"}}
+[info] >      at corsMiddleware (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:204:7) {"user":"    at corsMiddleware (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:204:7)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at corsMiddleware (/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/cors/lib/index.js:204:7)"}}
+[info] >      at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:87:17 {"user":"    at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:87:17","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"\u001b[90m> \u001b[39m     at /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/firebase-functions/lib/v2/providers/https.js:87:17"}}
+[debug] [2025-02-24T17:15:30.726Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-getChatResponse" in 9.677459ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finished \"us-central1-getChatResponse\" in 9.677459ms"}}
+[debug] [2025-02-24T17:15:30.730Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: IDLE"}}
+[debug] [2025-02-24T17:15:30.731Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-02-24T17:15:30.731Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-02-24T17:15:30.731Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-02-24T17:15:41.014Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/dashboard.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/dashboard.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:15:42.015Z] Validating nodejs source
+[debug] [2025-02-24T17:15:42.723Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:15:42.723Z] Building nodejs source
+[debug] [2025-02-24T17:15:42.723Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:15:42.724Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:15:42.726Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8692
+
+[debug] [2025-02-24T17:15:43.434Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:15:48.442Z] [worker-pool] Shutting down IDLE worker (us-central1-getChatResponse) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-getChatResponse)"}}
+[debug] [2025-02-24T17:15:48.442Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: FINISHING"}}
+[debug] [2025-02-24T17:15:48.446Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: exited"}}
+[debug] [2025-02-24T17:15:48.446Z] [worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-getChatResponse"},"extension":{},"message":"[worker-us-central1-getChatResponse-45133ff3-97fe-4417-8e7d-2a1753a9fbce]: FINISHED"}}
+[debug] [2025-02-24T17:15:57.574Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:15:58.575Z] Validating nodejs source
+[debug] [2025-02-24T17:15:59.895Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:15:59.895Z] Building nodejs source
+[debug] [2025-02-24T17:15:59.895Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:15:59.896Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:15:59.896Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8460
+
+[debug] [2025-02-24T17:16:00.403Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:16:00.702Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:16:01.704Z] Validating nodejs source
+[debug] [2025-02-24T17:16:02.040Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:16:02.040Z] Building nodejs source
+[debug] [2025-02-24T17:16:02.040Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:16:02.041Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:16:02.041Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[debug] [2025-02-24T17:16:02.042Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[info] Serving at port 8673
+
+[debug] [2025-02-24T17:16:02.212Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:16:03.043Z] Validating nodejs source
+[debug] [2025-02-24T17:16:03.410Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:16:03.410Z] Building nodejs source
+[debug] [2025-02-24T17:16:03.410Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:16:03.410Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:16:03.411Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[debug] [2025-02-24T17:16:03.411Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[info] Serving at port 8921
+
+[debug] [2025-02-24T17:16:03.562Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:16:03.612Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:16:04.613Z] Validating nodejs source
+[debug] [2025-02-24T17:16:04.962Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:16:04.963Z] Building nodejs source
+[debug] [2025-02-24T17:16:04.963Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:16:04.963Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:16:04.964Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8268
+
+[debug] [2025-02-24T17:16:05.177Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:17:06.490Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:06.691Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:07.694Z] Validating nodejs source
+[debug] [2025-02-24T17:17:08.175Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:08.175Z] Building nodejs source
+[debug] [2025-02-24T17:17:08.175Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:08.176Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:08.177Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8808
+
+[debug] [2025-02-24T17:17:08.539Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:17:08.781Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:09.782Z] Validating nodejs source
+[debug] [2025-02-24T17:17:10.129Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:10.130Z] Building nodejs source
+[debug] [2025-02-24T17:17:10.130Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:10.130Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:10.130Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8986
+
+[debug] [2025-02-24T17:17:10.301Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:17:13.864Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:14.267Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:14.469Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:17:15.470Z] Validating nodejs source
+[debug] [2025-02-24T17:17:15.811Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:15.811Z] Building nodejs source
+[debug] [2025-02-24T17:17:15.811Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:15.812Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:15.813Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[debug] [2025-02-24T17:17:15.813Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[info] Serving at port 8825
+
+[debug] [2025-02-24T17:17:15.975Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:17:16.815Z] Validating nodejs source
+[debug] [2025-02-24T17:17:17.124Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:17.124Z] Building nodejs source
+[debug] [2025-02-24T17:17:17.124Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:17.124Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:17.125Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8520
+
+[debug] [2025-02-24T17:17:17.281Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:17:22.067Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:17:23.069Z] Validating nodejs source
+[debug] [2025-02-24T17:17:23.396Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:23.396Z] Building nodejs source
+[debug] [2025-02-24T17:17:23.396Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:23.397Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:23.397Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8449
+
+[debug] [2025-02-24T17:17:23.560Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:17:23.800Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:24.802Z] Validating nodejs source
+[debug] [2025-02-24T17:17:25.155Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:25.155Z] Building nodejs source
+[debug] [2025-02-24T17:17:25.155Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:25.155Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:25.156Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[debug] [2025-02-24T17:17:25.156Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[info] Serving at port 8002
+
+[debug] [2025-02-24T17:17:25.364Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:17:26.157Z] Validating nodejs source
+[debug] [2025-02-24T17:17:26.477Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:26.477Z] Building nodejs source
+[debug] [2025-02-24T17:17:26.477Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:26.478Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:26.479Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8901
+
+[debug] [2025-02-24T17:17:26.647Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:17:41.715Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:42.716Z] Validating nodejs source
+[debug] [2025-02-24T17:17:43.303Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:43.303Z] Building nodejs source
+[debug] [2025-02-24T17:17:43.303Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:43.303Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:43.304Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8259
+
+[debug] [2025-02-24T17:17:43.710Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:17:44.008Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:44.613Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:45.421Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:46.127Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:17:47.129Z] Validating nodejs source
+[debug] [2025-02-24T17:17:47.667Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:17:47.668Z] Building nodejs source
+[debug] [2025-02-24T17:17:47.668Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:17:47.668Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:17:47.669Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8025
+
+[debug] [2025-02-24T17:17:48.058Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:18:29.833Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/functions/kundali.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:18:30.834Z] Validating nodejs source
+[debug] [2025-02-24T17:18:31.620Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:18:31.620Z] Building nodejs source
+[debug] [2025-02-24T17:18:31.620Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:18:31.620Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:18:31.622Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8892
+
+[debug] [2025-02-24T17:18:32.349Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:18:35.451Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:18:35.753Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:18:36.754Z] Validating nodejs source
+[debug] [2025-02-24T17:18:37.347Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:18:37.347Z] Building nodejs source
+[debug] [2025-02-24T17:18:37.347Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:18:37.348Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:18:37.349Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[info] Serving at port 8548
+
+[debug] [2025-02-24T17:18:37.902Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}
+[debug] [2025-02-24T17:18:43.711Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:18:44.013Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:18:44.417Z] File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/src/index.ts changed, reloading triggers"}}
+[debug] [2025-02-24T17:18:45.419Z] Validating nodejs source
+[debug] [2025-02-24T17:18:46.405Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.12",
+    "@google-cloud/functions-framework": "^3.4.5",
+    "@google-cloud/storage": "^7.15.2",
+    "ai": "^4.1.41",
+    "axios": "^1.7.9",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1",
+    "moment-timezone": "^0.5.47",
+    "openai": "^4.80.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-02-24T17:18:46.405Z] Building nodejs source
+[debug] [2025-02-24T17:18:46.405Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2025-02-24T17:18:46.406Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:18:46.406Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8882
+
+[debug] [2025-02-24T17:18:46.953Z] Got response from /__/functions.yaml {"endpoints":{"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: getChatResponse."}}

@@ -4,4 +4,10 @@ import { addSocialProfile } from "./functions/social";
 import { updateMemories } from "./functions/journal";
 import { getChatResponse } from "./functions/chat";
 
+
+import * as admin from "firebase-admin";
+
+admin.initializeApp();
+
+
 export { dashboardOutlook, generateKundali, addSocialProfile, updateMemories, getChatResponse };

@@ -33,6 +33,6 @@ export const models: Array<Model> = [
     apiIdentifier: 'gpt-4o',
     description: 'For complex, multi-step tasks',
   },
-] as const;
+];
 
 export const DEFAULT_MODEL_NAME: string = 'gpt-4o-mini';
