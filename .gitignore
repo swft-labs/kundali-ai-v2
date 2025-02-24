@@ -24,6 +24,3 @@ expo-env.d.ts
 /ios/
 /android/
 
-# local env files
-.env*.local
-.env
