@@ -1,7 +1,5 @@
-// Define models here.
-
 import { openai } from '@ai-sdk/openai';
-import { wrapLanguageModel as wrapLanguageModel } from 'ai';
+import { experimental_wrapLanguageModel as wrapLanguageModel } from 'ai';
 
 import { customMiddleware } from './custom-middleware';
 
@@ -11,6 +9,9 @@ export const customModel = (apiIdentifier: string) => {
     middleware: customMiddleware,
   });
 };
+
+export const imageGenerationModel = openai.image('dall-e-3');
+
 
 
 export interface Model {

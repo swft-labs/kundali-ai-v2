@@ -1,5 +1,6 @@
 // import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
+import { v4 as uuidv4 } from 'uuid';
 
 // const db = admin.firestore();
 
@@ -62,7 +63,8 @@ export const getChatResponse = v2.https.onRequest(async (request, response) => {
     response.status(500).json({ error: "Failed to generate response" });
   }
 });
+
 function generateUUID() {
-    throw new Error("Function not implemented.");
+  return uuidv4();
 }
 
