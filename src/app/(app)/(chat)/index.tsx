@@ -52,7 +52,7 @@ const HomePage = () => {
     initialMessages: [],
     key: chatId?.id,
     id: chatId?.id,
-    api: `${process.env.EXPO_PUBLIC_API_URL}/api/chat-open`,
+    api: `${process.env.GET_CHAT_RESPONSE_URL}`,
     body: {
       id: chatId?.id,
       modelId: "gpt-4o-mini",
