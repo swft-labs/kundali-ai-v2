@@ -1,33 +1,33 @@
-[debug] [2025-02-24T17:21:56.898Z] ----------------------------------------------------------------------
-[debug] [2025-02-24T17:21:56.901Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start --only functions
-[debug] [2025-02-24T17:21:56.901Z] CLI Version:   13.31.2
-[debug] [2025-02-24T17:21:56.901Z] Platform:      darwin
-[debug] [2025-02-24T17:21:56.901Z] Node Version:  v20.15.1
-[debug] [2025-02-24T17:21:56.901Z] Time:          Mon Feb 24 2025 09:21:56 GMT-0800 (Pacific Standard Time)
-[debug] [2025-02-24T17:21:56.901Z] ----------------------------------------------------------------------
+[debug] [2025-02-24T17:24:56.576Z] ----------------------------------------------------------------------
+[debug] [2025-02-24T17:24:56.582Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start --only functions
+[debug] [2025-02-24T17:24:56.582Z] CLI Version:   13.31.2
+[debug] [2025-02-24T17:24:56.582Z] Platform:      darwin
+[debug] [2025-02-24T17:24:56.582Z] Node Version:  v20.15.1
+[debug] [2025-02-24T17:24:56.582Z] Time:          Mon Feb 24 2025 09:24:56 GMT-0800 (Pacific Standard Time)
+[debug] [2025-02-24T17:24:56.582Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2025-02-24T17:21:57.011Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-02-24T17:21:57.011Z] > authorizing via signed-in user (abhay@swiftlabs.so)
+[debug] [2025-02-24T17:24:56.702Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-24T17:24:56.702Z] > authorizing via signed-in user (abhay@swiftlabs.so)
 [info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
 [warn] ⚠  logging: Logging Emulator unable to start on port 4500, starting on 4501 instead. {"metadata":{"emulator":{"name":"logging"},"message":"Logging Emulator unable to start on port 4500, starting on 4501 instead."}}
-[debug] [2025-02-24T17:21:57.246Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-02-24T17:21:57.246Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2025-02-24T17:21:57.248Z] [hub] writing locator at /var/folders/s6/7vgpcrzj2m1bmh2xg5m4zzh00000gn/T/hub-kundali-ai-app.json
-[debug] [2025-02-24T17:21:57.427Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-02-24T17:21:57.427Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-02-24T17:21:57.427Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-02-24T17:21:57.427Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[debug] [2025-02-24T17:24:57.022Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:24:57.023Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-02-24T17:24:57.025Z] [hub] writing locator at /var/folders/s6/7vgpcrzj2m1bmh2xg5m4zzh00000gn/T/hub-kundali-ai-app.json
+[debug] [2025-02-24T17:24:57.204Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:24:57.204Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:24:57.204Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-02-24T17:24:57.204Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
 [warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
-[debug] [2025-02-24T17:21:57.428Z] defaultcredentials: writing to file /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json
-[debug] [2025-02-24T17:21:57.430Z] Setting GAC to /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json"}}
-[debug] [2025-02-24T17:21:57.430Z] Checked if tokens are valid: true, expires at: 1740420080044
-[debug] [2025-02-24T17:21:57.430Z] Checked if tokens are valid: true, expires at: 1740420080044
-[debug] [2025-02-24T17:21:57.430Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig [none]
-[debug] [2025-02-24T17:21:57.796Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig 200
-[debug] [2025-02-24T17:21:57.796Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig {"projectId":"kundali-ai-app","storageBucket":"kundali-ai-app.firebasestorage.app"}
+[debug] [2025-02-24T17:24:57.206Z] defaultcredentials: writing to file /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json
+[debug] [2025-02-24T17:24:57.208Z] Setting GAC to /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/abhay/.config/firebase/abhay_swiftlabs_so_application_default_credentials.json"}}
+[debug] [2025-02-24T17:24:57.208Z] Checked if tokens are valid: true, expires at: 1740420080044
+[debug] [2025-02-24T17:24:57.208Z] Checked if tokens are valid: true, expires at: 1740420080044
+[debug] [2025-02-24T17:24:57.208Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig [none]
+[debug] [2025-02-24T17:24:57.612Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig 200
+[debug] [2025-02-24T17:24:57.613Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kundali-ai-app/adminSdkConfig {"projectId":"kundali-ai-app","storageBucket":"kundali-ai-app.firebasestorage.app"}
 [info] i  functions: Watching "/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions\" for Cloud Functions..."}}
-[debug] [2025-02-24T17:21:57.815Z] Validating nodejs source
-[debug] [2025-02-24T17:21:58.151Z] > [functions] package.json contents: {
+[debug] [2025-02-24T17:24:57.641Z] Validating nodejs source
+[debug] [2025-02-24T17:24:58.150Z] > [functions] package.json contents: {
   "name": "functions",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
@@ -66,20 +66,20 @@
   },
   "private": true
 }
-[debug] [2025-02-24T17:21:58.151Z] Building nodejs source
-[debug] [2025-02-24T17:21:58.151Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
+[debug] [2025-02-24T17:24:58.150Z] Building nodejs source
+[debug] [2025-02-24T17:24:58.150Z] Failed to find version of module node: reached end of search path /Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules
 [warn] ⚠  functions: Your requested "node" version "22" doesn't match your global version "20". Using node@20 from host. 
-[debug] [2025-02-24T17:21:58.153Z] Could not find functions.yaml. Must use http discovery
-[debug] [2025-02-24T17:21:58.156Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
-[info] Serving at port 8652
+[debug] [2025-02-24T17:24:58.153Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-02-24T17:24:58.156Z] Found firebase-functions binary at '/Users/abhay/Documents/swift-labs/kundali-ai-v2/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8038
 
-[debug] [2025-02-24T17:21:58.440Z] Got response from /__/functions.yaml {"endpoints":{"generateKundali":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"generateKundali"},"addSocialProfile":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"addSocialProfile"},"updateMemories":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"updateMemories"},"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-02-24T17:24:58.552Z] Got response from /__/functions.yaml {"endpoints":{"generateKundali":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"generateKundali"},"addSocialProfile":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"addSocialProfile"},"updateMemories":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"updateMemories"},"getChatResponse":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"getChatResponse"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
 [info] ✔  functions: Loaded functions definitions from source: generateKundali, addSocialProfile, updateMemories, getChatResponse. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: generateKundali, addSocialProfile, updateMemories, getChatResponse."}}
 [info] ✔  functions[us-central1-generateKundali]: http function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/generateKundali). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/generateKundali)."}}
 [info] ✔  functions[us-central1-addSocialProfile]: http function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/addSocialProfile). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/addSocialProfile)."}}
 [info] ✔  functions[us-central1-updateMemories]: http function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/updateMemories). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/updateMemories)."}}
 [info] ✔  functions[us-central1-getChatResponse]: http function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/getChatResponse). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/kundali-ai-app/us-central1/getChatResponse)."}}
-[debug] [2025-02-24T17:22:03.459Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2025-02-24T17:25:03.571Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
 [info] 
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │

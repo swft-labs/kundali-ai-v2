@@ -1,8 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// const API_BASE_URL =
-//   process.env.EXPO_PUBLIC_API_URL || "https://your-api-url.com";
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = process.env.LOCAL_API_URL || process.env.PRODUCTION_API_URL;
 
 export async function fetchApi(
   endpoint: string,
@@ -11,7 +9,7 @@ export async function fetchApi(
   const token = await AsyncStorage.getItem("session");
 
   const response = await fetch(
-    `${process.env.EXPO_PUBLIC_API_URL}/api/${endpoint}`,
+    `${API_BASE_URL}/api/${endpoint}`,
     {
       credentials: "include",
       headers: {
