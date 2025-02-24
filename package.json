@@ -36,7 +36,7 @@
     "@rn-primitives/slot": "^1.1.0",
     "@rn-primitives/types": "^1.1.0",
     "@tabler/icons-react-native": "^3.22.0",
-    "ai": "^3.4.33",
+    "ai": "4.0.36",
     "array-to-image": "^1.0.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",

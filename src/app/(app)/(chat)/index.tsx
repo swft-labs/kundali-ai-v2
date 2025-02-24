@@ -52,7 +52,7 @@ const HomePage = () => {
     initialMessages: [],
     key: chatId?.id,
     id: chatId?.id,
-    api: `${process.env.GET_CHAT_RESPONSE_URL}`,
+    api: `http://localhost:8081/chat`,
     body: {
       id: chatId?.id,
       modelId: "gpt-4o-mini",
