@@ -1,16 +1,19 @@
 import { Tabs } from "expo-router";
 import { BookOpen, Home, MessageSquare, Users } from "lucide-react-native";
 import { useColorScheme } from "react-native";
+import { usePathname } from "expo-router";
 
 export default function AppLayout() {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
+  const pathname = usePathname();
+  const hideTabBar = pathname === "/chat" || pathname.includes("/chat");
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
+        tabBarStyle: hideTabBar ? { display: 'none' } : {
           backgroundColor: isDark ? "hsl(240, 10%, 3.9%)" : "hsl(0, 0%, 100%)", // Background color based on theme
           borderTopColor: isDark ? "hsl(240, 3.7%, 15.9%)" : "hsl(240, 5.9%, 90%)", // Border color
           paddingBottom: 10,
