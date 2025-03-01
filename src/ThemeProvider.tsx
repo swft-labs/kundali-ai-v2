@@ -11,7 +11,7 @@ import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import { Platform } from "react-native";
-import { useColorScheme } from "@/lib/useColorScheme";
+import { useColorScheme } from "@/hooks/useColorScheme";
 import { NAV_THEME } from "./constants";
 // import { PortalHost } from "@rn-primitives/portal";
 // import { ThemeToggle } from "@/components/ThemeToggle";

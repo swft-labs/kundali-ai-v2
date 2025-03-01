@@ -7,7 +7,7 @@ import { Text } from "@/components/ui/text";
 import WeatherCard from "@/components/chat/weather";
 import { WelcomeMessage } from "@/components/chat/welcome-message";
 import React, { forwardRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import { LottieLoader } from "@/components/chat/lottie-loader";
 
 type ToolInvocation = {

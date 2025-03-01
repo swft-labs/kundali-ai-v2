@@ -25,7 +25,7 @@ import { ChatTextInput } from "./chat-text-input";
 import { forwardRef, useEffect, useState } from "react";
 import { useImagePicker } from "@/hooks/useImagePicker";
 import { Image } from "expo-image";
-import { useStore } from "@/lib/globalStore";
+import { useStore } from "@/store/globalStore";
 
 type Props = {
   input: string;

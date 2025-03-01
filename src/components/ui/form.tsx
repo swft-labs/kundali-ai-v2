@@ -10,7 +10,7 @@ import {
   useFormContext,
 } from "react-hook-form";
 import { View } from "react-native";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import { Label } from "./label";
 import { Text } from "./text";
 

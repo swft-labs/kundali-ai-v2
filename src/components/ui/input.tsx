@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TextInput } from "react-native";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import { Platform } from "react-native";
 import { Slot } from "@radix-ui/react-slot";
 

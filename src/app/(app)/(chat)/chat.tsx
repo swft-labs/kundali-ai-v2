@@ -1,4 +1,4 @@
-import { generateUUID } from "@/lib/utils";
+import { generateUUID } from "@/utils";
 import { Redirect, useRouter, useLocalSearchParams } from "expo-router";
 import { useCallback, useEffect, useRef } from "react";
 import { Pressable, type TextInput, View, ScrollView, Text } from "react-native";
@@ -10,7 +10,7 @@ import { ChatInterface } from "@/components/chat/chat-interface";
 import { ChatInput } from "@/components/ui/chat-input";
 import { SuggestedActions } from "@/components/chat/suggested-actions";
 import type { ScrollView as GHScrollView } from "react-native-gesture-handler";
-import { useStore } from "@/lib/globalStore";
+import { useStore } from "@/store/globalStore";
 import { MessageCirclePlusIcon, Menu, ArrowLeft } from "lucide-react-native";
 import { Message } from "ai/react/dist/index";
 import Animated, { FadeIn } from "react-native-reanimated";

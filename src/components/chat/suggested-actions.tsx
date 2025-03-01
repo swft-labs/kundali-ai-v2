@@ -1,6 +1,6 @@
 import { View, Pressable } from "react-native";
 import { Text } from "@/components/ui/text";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import { ScrollAdapt } from "@/components/chat/scroll-adapt";
 import { useWindowDimensions } from "react-native";
 import { useState, useEffect } from "react";
@@ -9,8 +9,8 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
-import { useStore } from "@/lib/globalStore";
-import { generateUUID } from "@/lib/utils";
+import { useStore } from "@/store/globalStore";
+import { generateUUID } from "@/utils";
 import type { Message, CreateMessage } from "ai";
 
 interface SuggestedActionsProps {

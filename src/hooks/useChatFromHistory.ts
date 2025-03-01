@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Message } from "ai/react";
-import { convertToUIMessages } from "@/lib/utils";
+import { convertToUIMessages } from "@/utils";
 
 type ChatIdState = {
   id: string;
