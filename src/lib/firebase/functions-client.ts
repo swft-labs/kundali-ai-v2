@@ -1,9 +1,12 @@
+import { useDashboardStore } from "@/store/dashboardStore";
 
 
-const GET_CHAT_RESPONSE_URL = process.env.GET_CHAT_RESPONSE_URL;
-const UPDATE_MEMORIES_URL = process.env.UPDATE_MEMORIES_URL;
-const GENERATE_KUNDALI_URL = process.env.GENERATE_KUNDALI_URL;
-const ADD_SOCIAL_PROFILE_URL = process.env.ADD_SOCIAL_PROFILE_URL;
+const GET_CHAT_RESPONSE_URL = process.env.EXPO_PUBLIC_GET_CHAT_RESPONSE_URL;
+const UPDATE_MEMORIES_URL = process.env.EXPO_PUBLIC_UPDATE_MEMORIES_URL;
+const GENERATE_KUNDALI_URL = process.env.EXPO_PUBLIC_GENERATE_KUNDALI_URL;
+const ADD_SOCIAL_PROFILE_URL = process.env.EXPO_PUBLIC_ADD_SOCIAL_PROFILE_URL;
+const DASHBOARD_UPDATE_URL = process.env.EXPO_PUBLIC_UPDATE_DASHBOARD_URL;
+
 
 // Helper function to get auth token and user ID with dummy data
 async function getAuthDetails() {
@@ -135,3 +138,18 @@ export async function addSocialProfile(profileId: string) {
     throw new Error("Failed to add social profile");
   }
 }
+
+
+
+export async function getDashboardInsights() {
+  try {
+    const { token, userId } = await getAuthDetails();
+    const { fetchDashboard } = useDashboardStore.getState();
+
+    await fetchDashboard(userId);
+  } catch (error) {
+    console.error("Error fetching dashboard insights:", error);
+    throw new Error("Failed to fetch dashboard insights");
+  }
+}
+
