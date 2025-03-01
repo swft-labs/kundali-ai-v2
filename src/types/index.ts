@@ -56,7 +56,7 @@ export const DashboardEntrySchema = z.object({
   dos: z.array(z.string()),
   donts: z.array(z.string()),
   suggestions: z.array(z.string()),
-  daily_horoscope_transition: z.string(),
+  transition: z.string(),
   mood_of_the_day: z.string(),
   auspicious_time: z.string(),
 });

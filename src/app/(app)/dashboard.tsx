@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react-native";
 
 const dummyInsights = {
   daily_quote: "The stars align in your favor today.",
-  transit_quote: "Mercury's movement today enhances communication and self-expression.",
+  transition: "Mercury's movement today enhances communication and self-expression.",
   dos: ["Meditate in the morning", "Wear white for positive energy", "Connect with loved ones"],
   donts: ["Avoid arguments", "Postpone major decisions", "Don't overwork"],
   suggestions: [
@@ -12,7 +12,6 @@ const dummyInsights = {
     "Take a break from technology for clarity.",
     "Make a small but impactful change in your routine.",
   ],
-  daily_horoscope_transition: "A day of new opportunities and self-discovery awaits.",
   mood_of_the_day: "Optimistic & Focused",
   auspicious_time: "10:30 AM - 12:00 PM",
 };
@@ -31,16 +30,11 @@ export default function DashboardPage() {
             🌟 Daily Insights
         </Text>
 
-        {/* Horoscope */}
-        <Pressable className="border border-gray-200 bg-white dark:bg-black p-4 rounded-2xl mb-4">
-            <Text className="font-semibold text-lg">💬 Daily Horoscope</Text>
-            <Text className="text-gray-700 mt-1">{dummyInsights.daily_horoscope_transition}</Text>
-        </Pressable>
 
         {/* Transit Quote */}
         <Pressable className="border border-gray-200 bg-white dark:bg-black p-4 rounded-2xl mb-4">
             <Text className="font-semibold text-lg">🌌 Planetary Influence</Text>
-            <Text className="text-gray-700 mt-1">{dummyInsights.transit_quote}</Text>
+            <Text className="text-gray-700 mt-1">{dummyInsights.transition}</Text>
         </Pressable>
 
         {/* Dos */}
