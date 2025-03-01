@@ -31,10 +31,10 @@ export default function ChatHome() {
         <Pressable
           key={index}
           onPress={() => handleOptionPress(item.label)}
-          className="flex-row items-center justify-between bg-[#1E1E1E] p-4 rounded-2xl mb-3 border border-[#333] w-80"
+          className="flex-row items-center justify-between border border-gray-200 bg-white dark:bg-black p-4 rounded-2xl mb-3 w-80"
         >
           <View className="flex-1">
-            <Text className="text-white text-lg">
+            <Text className="font-semibold text-lg">
               {item.emoji} {item.label}
             </Text>
           </View>
