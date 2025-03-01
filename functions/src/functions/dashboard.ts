@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
-import { retrieveKundaliSummary, retrieveBirthDetails, getPanchangData } from "../lib/utils";
+import { retrieveKundaliSummary, getPanchangData } from "../lib/utils";
 
 import { DashboardEntry, DashboardEntrySchema } from "../types";
 import { OpenAI } from "openai";
@@ -9,6 +9,7 @@ import { zodResponseFormat } from "openai/helpers/zod";
 const openai = new OpenAI({
   apiKey: "YOUR_OPENAI_API_KEY",
 });
+
 
 const db = admin.firestore();
 
@@ -59,63 +60,64 @@ export async function generateAstrologyInsights(kundaliSummary: string, dailyPan
 }
 
 
-
-
-export const dashboardOutlook = v2.pubsub
-// @ts-ignore  
-.schedule("every 15 minutes") // Reduced frequency to avoid unnecessary runs
-.timeZone("UTC")
-.onRun(async () => {
-  const now = new Date();
-  const nowISO = now.toISOString();
-
-  // Query only users whose next update is due
-  const usersSnapshot = await db
-    .collection("users")
-    .where("next_insight_update", "<=", nowISO) // Only get users who need updates
-    .get();
-
-  for (const userDoc of usersSnapshot.docs) {
-    const userId = userDoc.id;
-
-    try {
-      const userData = userDoc.data();
-      if (!userData.timezone) continue;
-
-      const kundaliSummary = userData.kundali_summary ?? await retrieveKundaliSummary(db, userId);
-      if (!kundaliSummary) continue;
-
-      // Fetch or reuse Panchang data
-      let dailyPanchangData = userData.daily_panchang;
-      if (!dailyPanchangData || userData.panchang_date !== nowISO.split("T")[0]) {
-        dailyPanchangData = await getPanchangData(db, userId);
-        await db.collection("users").doc(userId).update({
-          daily_panchang: dailyPanchangData,
-          panchang_date: nowISO.split("T")[0],
-        });
-      }
-
-      const dailyPanchangString = JSON.stringify(dailyPanchangData);
-
-      // Generate astrology insights
-      const astrologyInsights = await generateAstrologyInsights(kundaliSummary, dailyPanchangString);
-
-      // Store insights in Firestore
-      await db.collection("dashboard").doc(userId).collection(nowISO.split("T")[0]).doc("summary").set({
-        ...astrologyInsights,
-        timestamp: admin.firestore.FieldValue.serverTimestamp(),
-      });
-
-      // Schedule next update at 2 AM next day in user's timezone
-      const nextUpdate = new Date(now);
-      nextUpdate.setUTCHours(2, 0, 0, 0);
-      const nextUpdateISO = new Date(nextUpdate.toLocaleString("en-US", { timeZone: userData.timezone })).toISOString();
-
-      await db.collection("users").doc(userId).update({ next_insight_update: nextUpdateISO });
-
-      console.log(`Dashboard updated for user ${userId}`);
-    } catch (error) {
-      console.error(`Failed to process user ${userId}:`, error);
+export const updateDashboard = v2.https.onRequest(async (req, res) => {
+  try {
+    const userId = req.query.userId as string;
+    if (!userId) {
+      res.status(400).json({ error: "Missing userId" });
+      return;
     }
+
+    const userDoc = await db.collection("users").doc(userId).get();
+    if (!userDoc.exists) {
+      res.status(404).json({ error: "User not found" });
+      return;
+    }
+
+    const userData = userDoc.data();
+    const date = new Date().toISOString().split("T")[0];
+
+    const insightsDoc = await db
+      .collection("dashboard")
+      .doc(userId)
+      .collection(date)
+      .doc("summary")
+      .get();
+
+    if (insightsDoc.exists) {
+      console.log(`Insights already exist for user ${userId}`);
+      res.status(200).json({ message: "Insights already up-to-date", data: insightsDoc.data() });
+      return;
+    }
+
+    if (!userData) {
+      res.status(400).json({ error: "User data not found" });
+      return;
+    }
+
+    const kundaliSummary = userData.kundali_summary ?? await retrieveKundaliSummary(db, userId);
+    if (!kundaliSummary) {
+      res.status(400).json({ error: "Missing Kundali data" });
+      return;
+    }
+
+    let dailyPanchangData = userData.daily_panchang;
+    if (!dailyPanchangData || userData.panchang_date !== date) {
+      dailyPanchangData = await getPanchangData(db, userId);
+      await db.collection("users").doc(userId).update({ daily_panchang: dailyPanchangData, panchang_date: date });
+    }
+
+    const astrologyInsights = await generateAstrologyInsights(kundaliSummary, JSON.stringify(dailyPanchangData));
+
+    await db.collection("dashboard").doc(userId).collection(date).doc("summary").set({
+      ...astrologyInsights,
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
+    res.status(200).json({ message: "Dashboard updated", data: astrologyInsights });
+  } catch (error) {
+    console.error("Error updating dashboard:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
+     

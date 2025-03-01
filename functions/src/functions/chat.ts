@@ -1,8 +1,5 @@
-// import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
 import { v4 as uuidv4 } from 'uuid';
-
-// const db = admin.firestore();
 
 import { convertToCoreMessages, streamText } from 'ai';
 import { models, customModel } from "../lib/models";
