@@ -1,7 +1,7 @@
 import { View, Pressable } from "react-native";
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
-import { ScrollAdapt } from "@/components/scroll-adapt";
+import { ScrollAdapt } from "@/components/chat/scroll-adapt";
 import { useWindowDimensions } from "react-native";
 import { useState, useEffect } from "react";
 import Animated, {

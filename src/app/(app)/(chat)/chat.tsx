@@ -5,10 +5,10 @@ import { Pressable, type TextInput, View, ScrollView, Text } from "react-native"
 import { useSafeAreaInsets, SafeAreaView } from "react-native-safe-area-context";
 import { fetch } from "expo/fetch";
 import { useChat } from "ai/react/dist/index";
-import { LottieLoader } from "@/components/lottie-loader";
-import { ChatInterface } from "@/components/chat-interface";
+import { LottieLoader } from "@/components/chat/lottie-loader";
+import { ChatInterface } from "@/components/chat/chat-interface";
 import { ChatInput } from "@/components/ui/chat-input";
-import { SuggestedActions } from "@/components/suggested-actions";
+import { SuggestedActions } from "@/components/chat/suggested-actions";
 import type { ScrollView as GHScrollView } from "react-native-gesture-handler";
 import { useStore } from "@/lib/globalStore";
 import { MessageCirclePlusIcon, Menu, ArrowLeft } from "lucide-react-native";

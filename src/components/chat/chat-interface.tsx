@@ -4,11 +4,11 @@ import { View, ScrollView, ActivityIndicator } from "react-native";
 import { CustomMarkdown } from "@/components/ui/markdown";
 import { useKeyboard } from "@react-native-community/hooks";
 import { Text } from "@/components/ui/text";
-import WeatherCard from "@/components/weather";
-import { WelcomeMessage } from "@/components/welcome-message";
+import WeatherCard from "@/components/chat/weather";
+import { WelcomeMessage } from "@/components/chat/welcome-message";
 import React, { forwardRef } from "react";
 import { cn } from "@/lib/utils";
-import { LottieLoader } from "@/components/lottie-loader";
+import { LottieLoader } from "@/components/chat/lottie-loader";
 
 type ToolInvocation = {
   toolName: string;

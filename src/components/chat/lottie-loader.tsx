@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { View } from "react-native";
 import LottieView from "lottie-react-native";
-import loaderAnimation from "../assets/loader-three-dots.json";
+import loaderAnimation from "@/assets/loader-three-dots.json";
 
 export const LottieLoader = ({ width = 60, height = 60 }) => {
   const animationRef = useRef<LottieView>(null);
