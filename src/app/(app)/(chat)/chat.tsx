@@ -93,6 +93,7 @@ const HomePage = () => {
     body: {
       id: chatId?.id,
       modelId: "gpt-4o-mini",
+      topic: topic,
     },
     onFinish: () => {
       scrollViewRef.current?.scrollToEnd({ animated: true });

@@ -57,14 +57,17 @@ export function SuggestedActions({
     const newChatId = generateUUID();
     setChatId({ id: newChatId, from: "newChat" });
 
-    // Send the initial message using append
+    // Send the initial message using append with the topic
     await append(
       {
         role: "user",
         content: action,
       },
       {
-        body: { id: newChatId },
+        body: { 
+          id: newChatId,
+          topic: topic // Pass the topic to the backend
+        },
       },
     );
   };
