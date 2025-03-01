@@ -8,11 +8,19 @@ const options = [
   { emoji: "🌞", label: "Daily Reading" },
   { emoji: "🌹", label: "Match Compatibility" },
   { emoji: "💼", label: "Career and Business" },
-  { emoji: "❤️", label: "Health Outlook" },
+  { emoji: "🫀", label: "Health Outlook" },
+  { emoji: "🧘", label: "Spritual Wellness" },
 ];
 
 export default function ChatHome() {
   const router = useRouter();
+
+  const handleOptionPress = (label: string) => {
+    router.push({
+      pathname: "/chat",
+      params: { topic: label }
+    });
+  };
 
   return (
     <View className="flex-1 items-center justify-center">
@@ -22,16 +30,19 @@ export default function ChatHome() {
       {options.map((item, index) => (
         <Pressable
           key={index}
-          onPress={() => router.push("/chat")}
-          className="flex-row items-center justify-between bg-[#1E1E1E] p-4 rounded-2xl mb-3 border border-[#333]"
+          onPress={() => handleOptionPress(item.label)}
+          className="flex-row items-center justify-between bg-[#1E1E1E] p-4 rounded-2xl mb-3 border border-[#333] w-80"
         >
-          <Text className="text-white text-lg">
-            {item.emoji} {item.label}
-          </Text>
-          <View className="ml-4">
+          <View className="flex-1">
+            <Text className="text-white text-lg">
+              {item.emoji} {item.label}
+            </Text>
+          </View>
+          <View>
             <ArrowRight size={18} color="#888" />
           </View>
         </Pressable>
+      
       ))}
     </View>
   );

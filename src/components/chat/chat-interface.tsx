@@ -28,16 +28,17 @@ type ChatInterfaceProps = {
   messages: Message[];
   scrollViewRef: React.RefObject<ScrollView>;
   isLoading?: boolean;
+  topic?: string;
 };
 
 export const ChatInterface = forwardRef<ScrollView, ChatInterfaceProps>(
-  ({ messages, scrollViewRef, isLoading }, ref) => {
+  ({ messages, scrollViewRef, isLoading, topic }, ref) => {
     const { keyboardShown, keyboardHeight } = useKeyboard();
 
     return (
       <View className="flex-1">
         <ScrollView ref={ref} className="flex-1 space-y-4 p-4">
-          {!messages.length && <WelcomeMessage />}
+          {!messages.length && <WelcomeMessage topic={topic} />}
           {messages.length > 0
             ? messages.map((m, index) => (
                 <React.Fragment key={m.id}>

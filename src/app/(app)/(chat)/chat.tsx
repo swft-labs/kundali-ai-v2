@@ -1,5 +1,5 @@
 import { generateUUID } from "@/lib/utils";
-import { Redirect, Stack, useNavigation, useRouter } from "expo-router";
+import { Redirect, Stack, useNavigation, useRouter, useLocalSearchParams } from "expo-router";
 import { useCallback, useEffect, useRef } from "react";
 import { Pressable, type TextInput, View, ScrollView, Text } from "react-native";
 import { useSafeAreaInsets, SafeAreaView } from "react-native-safe-area-context";
@@ -21,7 +21,7 @@ type WeatherResult = {
   weatherCode: string;
   humidity: number;
   wind: number;
-}; // Use for Gen UI tools in the future
+}; // Use for Gen UI tools in the future - KEEP THIS
 
 // New ChatHeader component
 const ChatHeader = ({ 
@@ -60,6 +60,7 @@ const ChatHeader = ({
 };
 
 const HomePage = () => {
+  const { topic } = useLocalSearchParams<{ topic?: string }>();
   const {
     clearImageUris,
     setBottomChatHeightHandler,
@@ -160,11 +161,16 @@ const HomePage = () => {
           messages={messages}
           scrollViewRef={scrollViewRef}
           isLoading={isLoading}
+          topic={topic}
         />
       </ScrollView>
 
       {messages.length === 0 && (
-        <SuggestedActions hasInput={input.length > 0} append={append} />
+        <SuggestedActions 
+          hasInput={input.length > 0} 
+          append={append} 
+          topic={topic}
+        />
       )}
 
       <ChatInput
