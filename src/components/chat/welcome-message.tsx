@@ -1,7 +1,5 @@
-import { View, Pressable, Linking } from "react-native";
-import { Image } from "expo-image";
+import { View } from "react-native";
 import { Text } from "@/components/ui/text";
-import { MessageCircle } from "@/lib/icons";
 
 type WelcomeMessageProps = {
   topic?: string;
@@ -26,8 +24,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
   let welcomeContent = (
     <View className="space-y-4">
       <Text className="text-center leading-7">
-        Welcome to Kundali AI! I'm here to provide insights based on Vedic astrology 
-        and help guide you on your journey. How can I assist you today?
+        Welcome to Kundali AI! Your astrological insights are ready.  
+        Let’s dive into your cosmic blueprint and uncover what the universe has in store for you.  
+        What would you like to explore today?
       </Text>
     </View>
   );
@@ -39,8 +38,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              I'm ready to answer any questions you have about astrology, spirituality, 
-              or life guidance. What would you like to know?
+              The stars are aligned, and I have the answers you seek.  
+              Whether it's love, career, or personal growth—ask away.  
+              Let's decode your destiny. ✨
             </Text>
           </View>
         );
@@ -49,11 +49,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Let's explore your daily astrological reading. I can provide insights 
-              about planetary positions and how they might influence your day.
-            </Text>
-            <Text className="text-center leading-7">
-              To get started, I'll need to know your birth details (date, time, and place).
+              Your daily astrological insights are here.  
+              The planetary movements shape your energy—here’s how today unfolds for you.  
+              Let’s align your actions with the cosmos. 🌞
             </Text>
           </View>
         );
@@ -62,11 +60,8 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              I can help analyze compatibility between you and another person based on 
-              Vedic astrology principles.
-            </Text>
-            <Text className="text-center leading-7">
-              To begin, please share birth details for both individuals.
+              Wondering if you and someone special are truly aligned?  
+              I’ve analyzed your cosmic compatibility—here’s what the stars reveal about your connection. 💕
             </Text>
           </View>
         );
@@ -75,12 +70,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Let's explore your career path and business prospects through the lens of 
-              Vedic astrology.
-            </Text>
-            <Text className="text-center leading-7">
-              I can provide insights about favorable periods for career moves, business 
-              decisions, and potential opportunities.
+              Success isn’t just about effort—it’s about timing.  
+              The planetary transits reveal when to make bold moves, seize opportunities, and elevate your career.  
+              Let’s chart your path to prosperity. 📈
             </Text>
           </View>
         );
@@ -89,12 +81,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              I can offer astrological perspectives on health and wellness based on your 
-              birth chart.
-            </Text>
-            <Text className="text-center leading-7 italic">
-              Note: These insights are not medical advice. Always consult healthcare 
-              professionals for medical concerns.
+              Your physical and emotional well-being are influenced by planetary energy.  
+              Here’s what your birth chart says about your health cycles and vitality.  
+              Let’s align your habits with the universe for a healthier you. ❤️‍🩹
             </Text>
           </View>
         );
@@ -103,11 +92,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Let's explore your spiritual journey through Vedic astrological insights.
-            </Text>
-            <Text className="text-center leading-7">
-              I can suggest practices, meditations, and spiritual paths that might 
-              resonate with your astrological profile.
+              Your spiritual evolution is written in the stars.  
+              Whether you seek inner peace, guidance, or a deeper connection with the cosmos,  
+              here’s how your Kundali can illuminate your path. ✨
             </Text>
           </View>
         );
