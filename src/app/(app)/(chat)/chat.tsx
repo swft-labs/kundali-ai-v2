@@ -1,5 +1,5 @@
 import { generateUUID } from "@/lib/utils";
-import { Redirect, Stack, useNavigation, useRouter, useLocalSearchParams } from "expo-router";
+import { Redirect, useRouter, useLocalSearchParams } from "expo-router";
 import { useCallback, useEffect, useRef } from "react";
 import { Pressable, type TextInput, View, ScrollView, Text } from "react-native";
 import { useSafeAreaInsets, SafeAreaView } from "react-native-safe-area-context";
@@ -89,7 +89,7 @@ const HomePage = () => {
     initialMessages: [],
     key: chatId?.id,
     id: chatId?.id,
-    api: `http://localhost:3000/api/chat-open`,
+    api: `${process.env.EXPO_PUBLIC_LOCAL_API_URL}`,
     body: {
       id: chatId?.id,
       modelId: "gpt-4o-mini",

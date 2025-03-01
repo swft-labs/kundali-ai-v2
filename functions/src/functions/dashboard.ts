@@ -60,56 +60,62 @@ export async function generateAstrologyInsights(kundaliSummary: string, dailyPan
 
 
 
-function isUserTime2AM(userTimezone: string): boolean {
-  try {
-    const nowUtc = new Date();
-    const userLocalTime = new Date(nowUtc.toLocaleString("en-US", { timeZone: userTimezone }));
-    return userLocalTime.getHours() === 2; // Run if local time is 2 AM
-  } catch (error) {
-    console.error(`Invalid timezone for user: ${userTimezone}`, error);
-    return false;
-  }
-}
-
 
 export const dashboardOutlook = v2.pubsub
-  //@ts-ignore
-  .schedule("every hour") // Runs every hour to check for users in 2 AM local time
-  .timeZone("UTC")
-  .onRun(async () => {
-    const usersSnapshot = await db.collection("users").get();
-    const date = new Date().toISOString().split("T")[0];
+// @ts-ignore  
+.schedule("every 15 minutes") // Reduced frequency to avoid unnecessary runs
+.timeZone("UTC")
+.onRun(async () => {
+  const now = new Date();
+  const nowISO = now.toISOString();
 
-    for (const userDoc of usersSnapshot.docs) {
-      const userId = userDoc.id;
+  // Query only users whose next update is due
+  const usersSnapshot = await db
+    .collection("users")
+    .where("next_insight_update", "<=", nowISO) // Only get users who need updates
+    .get();
 
-      try {
-        const birthDetails = await retrieveBirthDetails(db, userId);
-        if (!birthDetails || !birthDetails.timezone) continue;
+  for (const userDoc of usersSnapshot.docs) {
+    const userId = userDoc.id;
 
-        if (!isUserTime2AM(birthDetails.timezone)) continue;
+    try {
+      const userData = userDoc.data();
+      if (!userData.timezone) continue;
 
-        const kundaliSummary = await retrieveKundaliSummary(db, userId);
-        if (!kundaliSummary) continue;
+      const kundaliSummary = userData.kundali_summary ?? await retrieveKundaliSummary(db, userId);
+      if (!kundaliSummary) continue;
 
-        // Fetch Panchang data
-        const dailyPanchangData = await getPanchangData(db, userId);
-
-        // Convert Panchang object to a string for AI processing
-        const dailyPanchangString = JSON.stringify(dailyPanchangData);
-
-        // Generate astrology insights
-        const astrologyInsights = await generateAstrologyInsights(kundaliSummary, dailyPanchangString);
-
-        // Store insights in Firestore
-        await db.collection("dashboard").doc(userId).collection(date).doc("summary").set({
-          ...astrologyInsights,
-          timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      // Fetch or reuse Panchang data
+      let dailyPanchangData = userData.daily_panchang;
+      if (!dailyPanchangData || userData.panchang_date !== nowISO.split("T")[0]) {
+        dailyPanchangData = await getPanchangData(db, userId);
+        await db.collection("users").doc(userId).update({
+          daily_panchang: dailyPanchangData,
+          panchang_date: nowISO.split("T")[0],
         });
-
-        console.log(`Dashboard updated for user ${userId} at 2 AM local time`);
-      } catch (error) {
-        console.error(`Failed to process user ${userId}:`, error);
       }
+
+      const dailyPanchangString = JSON.stringify(dailyPanchangData);
+
+      // Generate astrology insights
+      const astrologyInsights = await generateAstrologyInsights(kundaliSummary, dailyPanchangString);
+
+      // Store insights in Firestore
+      await db.collection("dashboard").doc(userId).collection(nowISO.split("T")[0]).doc("summary").set({
+        ...astrologyInsights,
+        timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      // Schedule next update at 2 AM next day in user's timezone
+      const nextUpdate = new Date(now);
+      nextUpdate.setUTCHours(2, 0, 0, 0);
+      const nextUpdateISO = new Date(nextUpdate.toLocaleString("en-US", { timeZone: userData.timezone })).toISOString();
+
+      await db.collection("users").doc(userId).update({ next_insight_update: nextUpdateISO });
+
+      console.log(`Dashboard updated for user ${userId}`);
+    } catch (error) {
+      console.error(`Failed to process user ${userId}:`, error);
     }
-  });
+  }
+});
