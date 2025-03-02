@@ -8,13 +8,18 @@ const openai = new OpenAI({ apiKey: "YOUR_OPENAI_API_KEY" });
 export const updateMemories = v2.https.onRequest(async (request, response) => {
   const { userId, journalEntry } = request.body;
   if (!userId || !journalEntry) {
-    response.status(400).send({ error: "User ID and journalEntry are required" });
+    response
+      .status(400)
+      .send({ error: "User ID and journalEntry are required" });
     return;
   }
 
   const openaiResponse = await openai.chat.completions.create({
     model: "gpt-4o-mini",
-    messages: [{ role: "system", content: "Extract key events." }, { role: "user", content: journalEntry }],
+    messages: [
+      { role: "system", content: "Extract key events." },
+      { role: "user", content: journalEntry },
+    ],
   });
 
   const messageContent = openaiResponse.choices[0].message.content;
@@ -24,7 +29,10 @@ export const updateMemories = v2.https.onRequest(async (request, response) => {
   }
 
   const memoriesData = JSON.parse(messageContent);
-  await db.collection("journal_memories").doc(userId).set({ memories: memoriesData.memories }, { merge: true });
+  await db
+    .collection("journal_memories")
+    .doc(userId)
+    .set({ memories: memoriesData.memories }, { merge: true });
 
   response.status(200).json({ message: "Memories updated successfully" });
 });

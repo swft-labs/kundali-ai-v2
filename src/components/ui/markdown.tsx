@@ -1,21 +1,21 @@
-import Markdown from "react-native-markdown-display";
 import {
+  A as ExpoA,
+  Code as ExpoCode,
+  Div as ExpoDiv,
   H1 as ExpoH1,
   H2 as ExpoH2,
   H3 as ExpoH3,
   H4 as ExpoH4,
   H5 as ExpoH5,
   H6 as ExpoH6,
-  Code as ExpoCode,
-  Pre as ExpoPre,
-  UL as ExpoUl,
   LI as ExpoLI,
-  Strong as ExpoStrong,
-  A as ExpoA,
   P as ExpoP,
-  Div as ExpoDiv,
+  Pre as ExpoPre,
+  Strong as ExpoStrong,
+  UL as ExpoUl,
 } from "@expo/html-elements";
 import { cssInterop } from "nativewind";
+import Markdown from "react-native-markdown-display";
 
 const H1 = cssInterop(ExpoH1, { className: "style" });
 const H2 = cssInterop(ExpoH2, { className: "style" });

@@ -1,13 +1,12 @@
-import { clsx, type ClassValue } from "clsx";
-import { Platform } from "react-native";
-import { twMerge } from "tailwind-merge";
 import type {
   CoreAssistantMessage,
   CoreMessage,
   CoreToolMessage,
   Message,
-  ToolInvocation,
 } from "ai";
+import { clsx, type ClassValue } from "clsx";
+import { Platform } from "react-native";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -98,7 +97,6 @@ function addToolMessageToChat({
   });
 }
 
-
 export function sanitizeResponseMessages(
   messages: Array<CoreToolMessage | CoreAssistantMessage>,
 ): Array<CoreToolMessage | CoreAssistantMessage> {
@@ -175,7 +173,6 @@ export function getMostRecentUserMessage(messages: Array<CoreMessage>) {
   const userMessages = messages.filter((message) => message.role === "user");
   return userMessages.at(-1);
 }
-
 
 export function getMessageIdFromAnnotations(message: Message) {
   if (!message.annotations) return message.id;

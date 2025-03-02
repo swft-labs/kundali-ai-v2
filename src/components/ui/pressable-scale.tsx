@@ -1,6 +1,6 @@
-import { type ComponentProps, useMemo } from "react";
 import { MotiPressable } from "moti/interactions";
 import { cssInterop } from "nativewind";
+import { useMemo, type ComponentProps } from "react";
 
 export type PressableScaleProps = ComponentProps<typeof MotiPressable> & {
   scaleTo?: number;
@@ -32,7 +32,7 @@ export function PressableScale({
               scale: pressed ? scaleTo : 1,
             };
           },
-        [disabled, scaleTo]
+        [disabled, scaleTo],
       )}
     />
   );

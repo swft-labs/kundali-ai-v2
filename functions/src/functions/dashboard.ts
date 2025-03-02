@@ -1,20 +1,21 @@
 import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
-import { retrieveKundaliSummary, getPanchangData } from "../lib/utils";
+import { getPanchangData, retrieveKundaliSummary } from "../lib/utils";
 
-import { DashboardEntry, DashboardEntrySchema } from "../types";
 import { OpenAI } from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
+import { DashboardEntry, DashboardEntrySchema } from "../types";
 
 const openai = new OpenAI({
   apiKey: "YOUR_OPENAI_API_KEY",
 });
 
-
 const db = admin.firestore();
 
-
-export async function generateAstrologyInsights(kundaliSummary: string, dailyPanchang: string): Promise<DashboardEntry> {
+export async function generateAstrologyInsights(
+  kundaliSummary: string,
+  dailyPanchang: string,
+): Promise<DashboardEntry> {
   const systemMessage = `
     You are an expert Vedic astrologer with deep knowledge of Kundali interpretation and Panchang analysis. 
     Your task is to generate highly personalized daily astrology insights based on the user's Kundali summary and the daily Panchang.
@@ -59,7 +60,6 @@ export async function generateAstrologyInsights(kundaliSummary: string, dailyPan
   return response.choices[0].message.parsed as DashboardEntry;
 }
 
-
 export const updateDashboard = v2.https.onRequest(async (req, res) => {
   try {
     const userId = req.query.userId as string;
@@ -86,7 +86,12 @@ export const updateDashboard = v2.https.onRequest(async (req, res) => {
 
     if (insightsDoc.exists) {
       console.log(`Insights already exist for user ${userId}`);
-      res.status(200).json({ message: "Insights already up-to-date", data: insightsDoc.data() });
+      res
+        .status(200)
+        .json({
+          message: "Insights already up-to-date",
+          data: insightsDoc.data(),
+        });
       return;
     }
 
@@ -95,7 +100,8 @@ export const updateDashboard = v2.https.onRequest(async (req, res) => {
       return;
     }
 
-    const kundaliSummary = userData.kundali_summary ?? await retrieveKundaliSummary(db, userId);
+    const kundaliSummary =
+      userData.kundali_summary ?? (await retrieveKundaliSummary(db, userId));
     if (!kundaliSummary) {
       res.status(400).json({ error: "Missing Kundali data" });
       return;
@@ -104,20 +110,32 @@ export const updateDashboard = v2.https.onRequest(async (req, res) => {
     let dailyPanchangData = userData.daily_panchang;
     if (!dailyPanchangData || userData.panchang_date !== date) {
       dailyPanchangData = await getPanchangData(db, userId);
-      await db.collection("users").doc(userId).update({ daily_panchang: dailyPanchangData, panchang_date: date });
+      await db
+        .collection("users")
+        .doc(userId)
+        .update({ daily_panchang: dailyPanchangData, panchang_date: date });
     }
 
-    const astrologyInsights = await generateAstrologyInsights(kundaliSummary, JSON.stringify(dailyPanchangData));
+    const astrologyInsights = await generateAstrologyInsights(
+      kundaliSummary,
+      JSON.stringify(dailyPanchangData),
+    );
 
-    await db.collection("dashboard").doc(userId).collection(date).doc("summary").set({
-      ...astrologyInsights,
-      timestamp: admin.firestore.FieldValue.serverTimestamp(),
-    });
+    await db
+      .collection("dashboard")
+      .doc(userId)
+      .collection(date)
+      .doc("summary")
+      .set({
+        ...astrologyInsights,
+        timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      });
 
-    res.status(200).json({ message: "Dashboard updated", data: astrologyInsights });
+    res
+      .status(200)
+      .json({ message: "Dashboard updated", data: astrologyInsights });
   } catch (error) {
     console.error("Error updating dashboard:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
-     

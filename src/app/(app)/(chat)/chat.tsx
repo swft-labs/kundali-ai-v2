@@ -1,19 +1,23 @@
-import { generateUUID } from "@/utils";
-import { Redirect, useRouter, useLocalSearchParams } from "expo-router";
-import { useCallback, useEffect, useRef } from "react";
-import { Pressable, type TextInput, View, ScrollView, Text } from "react-native";
-import { useSafeAreaInsets, SafeAreaView } from "react-native-safe-area-context";
-import { fetch } from "expo/fetch";
-import { useChat } from "ai/react/dist/index";
-import { LottieLoader } from "@/components/chat/lottie-loader";
 import { ChatInterface } from "@/components/chat/chat-interface";
-import { ChatInput } from "@/components/ui/chat-input";
 import { SuggestedActions } from "@/components/chat/suggested-actions";
-import type { ScrollView as GHScrollView } from "react-native-gesture-handler";
+import { ChatInput } from "@/components/ui/chat-input";
 import { useStore } from "@/store/globalStore";
-import { MessageCirclePlusIcon, Menu, ArrowLeft } from "lucide-react-native";
-import { Message } from "ai/react/dist/index";
+import { generateUUID } from "@/utils";
+import { Message, useChat } from "ai/react/dist/index";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { fetch } from "expo/fetch";
+import { ArrowLeft, MessageCirclePlusIcon } from "lucide-react-native";
+import { useCallback, useEffect, useRef } from "react";
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  type TextInput,
+} from "react-native";
+import type { ScrollView as GHScrollView } from "react-native-gesture-handler";
 import Animated, { FadeIn } from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type WeatherResult = {
   city: string;
@@ -24,32 +28,28 @@ type WeatherResult = {
 }; // Use for Gen UI tools in the future - KEEP THIS
 
 // New ChatHeader component
-const ChatHeader = ({ 
-  hasMessages, 
-  onNewChat 
-}: { 
-  hasMessages: boolean; 
-  onNewChat: () => void 
+const ChatHeader = ({
+  hasMessages,
+  onNewChat,
+}: {
+  hasMessages: boolean;
+  onNewChat: () => void;
 }) => {
   const router = useRouter();
   const { top } = useSafeAreaInsets();
-  
+
   return (
-    <View 
-      className="flex-row items-center justify-between px-4 py-3 bg-white dark:bg-black"
+    <View
+      className="flex-row items-center justify-between bg-white px-4 py-3 dark:bg-black"
       style={{ paddingTop: Math.max(top, 10) }}
     >
       <Pressable onPress={() => router.back()} className="p-2">
         <ArrowLeft size={20} color="black" />
       </Pressable>
-      
+
       <Text className="text-lg font-medium">🌙 Kundali AI</Text>
-      
-      <Pressable 
-        disabled={!hasMessages} 
-        onPress={onNewChat}
-        className="p-2"
-      >
+
+      <Pressable disabled={!hasMessages} onPress={onNewChat} className="p-2">
         <MessageCirclePlusIcon
           size={20}
           color={!hasMessages ? "#eee" : "black"}
@@ -149,11 +149,8 @@ const HomePage = () => {
       className="flex-1 bg-white dark:bg-black"
       style={{ paddingBottom: bottom }}
     >
-      <ChatHeader 
-        hasMessages={messages.length > 0} 
-        onNewChat={handleNewChat} 
-      />
-      
+      <ChatHeader hasMessages={messages.length > 0} onNewChat={handleNewChat} />
+
       <ScrollView
         className="container relative mx-auto flex-1 bg-white dark:bg-black"
         ref={scrollViewRef}
@@ -167,9 +164,9 @@ const HomePage = () => {
       </ScrollView>
 
       {messages.length === 0 && (
-        <SuggestedActions 
-          hasInput={input.length > 0} 
-          append={append} 
+        <SuggestedActions
+          hasInput={input.length > 0}
+          append={append}
           topic={topic}
         />
       )}

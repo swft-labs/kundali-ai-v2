@@ -2,7 +2,6 @@
 
 ![image](https://github.com/user-attachments/assets/32224070-a333-42d4-84bd-0674daee358a)
 
-
 ## Prerequisites
 
 - Node.js

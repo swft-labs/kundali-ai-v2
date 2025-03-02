@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_BASE_URL = process.env.LOCAL_API_URL || process.env.PRODUCTION_API_URL;
+const API_BASE_URL =
+  process.env.LOCAL_API_URL || process.env.PRODUCTION_API_URL;
 
 export async function fetchApi(
   endpoint: string,
@@ -8,19 +9,16 @@ export async function fetchApi(
 ) {
   const token = await AsyncStorage.getItem("session");
 
-  const response = await fetch(
-    `${API_BASE_URL}/api/${endpoint}`,
-    {
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-        ...(token && { Authorization: `Bearer ${token}` }),
-      },
-      ...(options.chatId && {
-        body: JSON.stringify({ chatId: options.chatId }),
-      }),
+  const response = await fetch(`${API_BASE_URL}/api/${endpoint}`, {
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token && { Authorization: `Bearer ${token}` }),
     },
-  );
+    ...(options.chatId && {
+      body: JSON.stringify({ chatId: options.chatId }),
+    }),
+  });
 
   if (!response.ok) {
     throw new Error(`API error: ${response.statusText}`);

@@ -1,31 +1,31 @@
+import { useImagePicker } from "@/hooks/useImagePicker";
+import { useStore } from "@/store/globalStore";
+import { Image } from "expo-image";
+import { ArrowUp, X } from "lucide-react-native";
 import type React from "react";
+import { forwardRef, useEffect, useState } from "react";
 import {
-  View,
-  type TextInput,
-  KeyboardAvoidingView,
+  ActivityIndicator,
   Keyboard,
-  useColorScheme,
+  KeyboardAvoidingView,
   Pressable,
   ScrollView,
-  ActivityIndicator,
+  View,
+  useColorScheme,
+  type TextInput,
 } from "react-native";
-import { Paperclip, ArrowUp, X } from "lucide-react-native";
-import { Button } from "./button";
 import Animated, {
-  useAnimatedStyle,
-  useAnimatedKeyboard,
-  withSpring,
   FadeIn,
   FadeOut,
-  withTiming,
   Layout,
+  useAnimatedKeyboard,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
 } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Button } from "./button";
 import { ChatTextInput } from "./chat-text-input";
-import { forwardRef, useEffect, useState } from "react";
-import { useImagePicker } from "@/hooks/useImagePicker";
-import { Image } from "expo-image";
-import { useStore } from "@/store/globalStore";
 
 type Props = {
   input: string;

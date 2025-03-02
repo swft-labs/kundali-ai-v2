@@ -99,7 +99,6 @@ export const SocialProfileSchema = z.object({
 export type SocialProfile = z.infer<typeof SocialProfileSchema>;
 export type Compatibility = z.infer<typeof CompatibilitySchema>;
 
-
 export const ChatMessageSchema = z.object({
   sender: z.union([z.literal("user"), z.literal("ai")]),
   text: z.string(),
@@ -107,11 +106,7 @@ export const ChatMessageSchema = z.object({
 });
 export type ChatMessage = z.infer<typeof ChatMessageSchema>;
 
-
-
 // ============== Below is the Kundali Doc In Depth (Not Needed but good for Reference)
-
-
 
 export const KundaliSummarySchema = z.object({
   full_name: z.string(),
@@ -129,7 +124,7 @@ export const KundaliSummarySchema = z.object({
       zodiac_sign: z.string(),
       house_number: z.number(),
       status: z.string(),
-    })
+    }),
   ),
   vimshottari_dasha: z.object({
     current_mahadasha: z.object({
@@ -154,7 +149,7 @@ export const KundaliSummarySchema = z.object({
       current_sign: z.string(),
       house_number: z.number(),
       effect: z.string(),
-    })
+    }),
   ),
   key_insights: z.object({
     career_and_money: z.string(),

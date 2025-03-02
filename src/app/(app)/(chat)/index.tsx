@@ -1,7 +1,6 @@
-import { View, Text } from "react-native";
 import { useRouter } from "expo-router";
-import { Pressable } from "react-native";
 import { ArrowRight } from "lucide-react-native";
+import { Pressable, Text, View } from "react-native";
 
 const options = [
   { emoji: "🎱", label: "Ask me anything" },
@@ -18,23 +17,23 @@ export default function ChatHome() {
   const handleOptionPress = (label: string) => {
     router.push({
       pathname: "/chat",
-      params: { topic: label }
+      params: { topic: label },
     });
   };
 
   return (
     <View className="flex-1 items-center justify-center">
-      <Text className="text-2xl font-bold text-center mb-20">
+      <Text className="mb-20 text-center text-2xl font-bold">
         🌙 Kundali AI
       </Text>
       {options.map((item, index) => (
         <Pressable
           key={index}
           onPress={() => handleOptionPress(item.label)}
-          className="flex-row items-center justify-between border border-gray-200 bg-white dark:bg-black p-4 rounded-2xl mb-3 w-80"
+          className="mb-3 w-80 flex-row items-center justify-between rounded-2xl border border-gray-200 bg-white p-4 dark:bg-black"
         >
           <View className="flex-1">
-            <Text className="font-semibold text-lg">
+            <Text className="text-lg font-semibold">
               {item.emoji} {item.label}
             </Text>
           </View>
@@ -42,7 +41,6 @@ export default function ChatHome() {
             <ArrowRight size={18} color="#888" />
           </View>
         </Pressable>
-      
       ))}
     </View>
   );

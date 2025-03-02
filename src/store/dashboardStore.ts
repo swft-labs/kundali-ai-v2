@@ -1,5 +1,5 @@
-import { create } from "zustand";
 import { DashboardEntry } from "@/types";
+import { create } from "zustand";
 
 interface DashboardState {
   insights: DashboardEntry | null;
@@ -27,7 +27,9 @@ export const useDashboardStore = create<DashboardState>((set) => ({
       });
 
       if (!response.ok) {
-        throw new Error(`Error fetching dashboard insights: ${response.statusText}`);
+        throw new Error(
+          `Error fetching dashboard insights: ${response.statusText}`,
+        );
       }
 
       const data = await response.json();

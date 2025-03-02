@@ -1,8 +1,7 @@
+import { cn } from "@/utils";
+import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
 import { TextInput } from "react-native";
-import { cn } from "@/utils";
-import { Platform } from "react-native";
-import { Slot } from "@radix-ui/react-slot";
 
 const ChatTextInput = React.forwardRef<
   React.ElementRef<typeof TextInput>,

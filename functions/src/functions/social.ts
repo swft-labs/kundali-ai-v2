@@ -1,17 +1,23 @@
 import * as admin from "firebase-admin";
 import * as v2 from "firebase-functions";
 import { callAstrologyAPI } from "../lib/utils";
-import { SocialProfile, Compatibility } from "../types";
+import { Compatibility, SocialProfile } from "../types";
 
 const db = admin.firestore();
 
 async function calculateCompatibility(userId: string, profileId: string) {
   try {
     // Call the astrology API to get compatibility details
-    const matchResponse = await callAstrologyAPI(db, userId, "match_making_report");
+    const matchResponse = await callAstrologyAPI(
+      db,
+      userId,
+      "match_making_report",
+    );
 
     if (!matchResponse) {
-      console.error(`No match response for userId: ${userId} and profileId: ${profileId}`);
+      console.error(
+        `No match response for userId: ${userId} and profileId: ${profileId}`,
+      );
       return;
     }
 
@@ -29,7 +35,8 @@ async function calculateCompatibility(userId: string, profileId: string) {
       vedha_dosha: {
         status: matchResponse?.vedha_dosha?.status || false,
       },
-      match_report: matchResponse?.conclusion?.match_report || "No match report available.",
+      match_report:
+        matchResponse?.conclusion?.match_report || "No match report available.",
     };
 
     // Construct the SocialProfile object
@@ -55,20 +62,22 @@ async function calculateCompatibility(userId: string, profileId: string) {
   }
 }
 
-export const addSocialProfile = v2.https.onRequest(async (request, response) => {
-  try {
-    const { userId, profileId } = request.body;
-    
-    if (!userId || !profileId) {
-      response.status(400).json({ error: "Missing userId or profileId" });
-      return;
+export const addSocialProfile = v2.https.onRequest(
+  async (request, response) => {
+    try {
+      const { userId, profileId } = request.body;
+
+      if (!userId || !profileId) {
+        response.status(400).json({ error: "Missing userId or profileId" });
+        return;
+      }
+
+      await calculateCompatibility(userId, profileId);
+
+      response.status(202).json({ message: "Compatibility check started" });
+    } catch (error) {
+      console.error("Error adding social profile:", error);
+      response.status(500).json({ error: "Internal Server Error" });
     }
-
-    await calculateCompatibility(userId, profileId);
-
-    response.status(202).json({ message: "Compatibility check started" });
-  } catch (error) {
-    console.error("Error adding social profile:", error);
-    response.status(500).json({ error: "Internal Server Error" });
-  }
-});
+  },
+);

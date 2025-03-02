@@ -1,9 +1,9 @@
+import * as admin from "firebase-admin";
+import * as v2 from "firebase-functions";
 import { OpenAI } from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
 import { callAstrologyAPI, retrieveBirthDetails } from "../lib/utils";
 import { BirthDetails, Kundali, KundaliSchema } from "../types";
-import * as admin from "firebase-admin";
-import * as v2 from "firebase-functions";
 
 const db = admin.firestore();
 
@@ -11,12 +11,16 @@ const openai = new OpenAI({
   apiKey: "YOUR_OPENAI_API_KEY",
 });
 
-
-
-async function generateKundaliChart(userId: string): Promise<{ north_chart_svg: string; south_chart_svg: string }> {
+async function generateKundaliChart(
+  userId: string,
+): Promise<{ north_chart_svg: string; south_chart_svg: string }> {
   try {
     // Fetch Kundali chart SVG from astrology API
-    const chartResponse = await callAstrologyAPI(db, userId, "horo_chart_image");
+    const chartResponse = await callAstrologyAPI(
+      db,
+      userId,
+      "horo_chart_image",
+    );
 
     if (!chartResponse?.svg) {
       throw new Error("Failed to generate Kundali chart SVG.");
@@ -37,9 +41,9 @@ async function generateKundaliChart(userId: string): Promise<{ north_chart_svg: 
   }
 }
 
-
-
-async function generateLifeDetails(kundaliSummary: string): Promise<Kundali["life_details"]> {
+async function generateLifeDetails(
+  kundaliSummary: string,
+): Promise<Kundali["life_details"]> {
   try {
     const systemMessage = `
       You are an expert Vedic astrologer. Your task is to generate a detailed analysis of the user's personality, relationships, career, and health based on their Kundali summary.
@@ -54,7 +58,10 @@ async function generateLifeDetails(kundaliSummary: string): Promise<Kundali["lif
         { role: "system", content: systemMessage },
         { role: "user", content: userMessage },
       ],
-      response_format: zodResponseFormat(KundaliSchema.shape.life_details, "lifeDetails"),
+      response_format: zodResponseFormat(
+        KundaliSchema.shape.life_details,
+        "lifeDetails",
+      ),
     });
 
     return response.choices[0].message.parsed as Kundali["life_details"];
@@ -75,11 +82,14 @@ async function generateKundaliSummary(userId: string) {
     const birthDetails: BirthDetails = await retrieveBirthDetails(db, userId);
 
     // Call astrology API for Kundali summary
-    const kundaliSummaryResponse = await callAstrologyAPI(db, userId, "vedic_horoscope");
+    const kundaliSummaryResponse = await callAstrologyAPI(
+      db,
+      userId,
+      "vedic_horoscope",
+    );
 
     // Generate Kundali chart SVGs
     const kundaliChart = await generateKundaliChart(userId);
-
 
     // Extract relevant details
     const astroDetails = kundaliSummaryResponse?.astro_details;
@@ -114,7 +124,7 @@ async function generateKundaliSummary(userId: string) {
         (planet: any) =>
           `| ${planet.name} | ${planet.sign} | ${planet.house} | ${
             planet.is_retro === "true" ? "Retrograde" : planet.planet_awastha
-          } |`
+          } |`,
       )
       .join("\n")}
 
@@ -170,12 +180,21 @@ export const generateKundali = v2.https.onRequest(async (request, response) => {
 
     await generateKundaliSummary(userId);
 
-    response.status(200).json({ message: `Kundali generated for user ${userId}` });
+    response
+      .status(200)
+      .json({ message: `Kundali generated for user ${userId}` });
   } catch (error: unknown) {
     if (error instanceof Error) {
-      response.status(500).json({ error: "Internal server error", details: error.message });
+      response
+        .status(500)
+        .json({ error: "Internal server error", details: error.message });
     } else {
-      response.status(500).json({ error: "Internal server error", details: "An unknown error occurred." });
+      response
+        .status(500)
+        .json({
+          error: "Internal server error",
+          details: "An unknown error occurred.",
+        });
     }
   }
 });

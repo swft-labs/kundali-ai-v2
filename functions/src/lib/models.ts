@@ -1,7 +1,7 @@
-import { openai } from '@ai-sdk/openai';
-import { experimental_wrapLanguageModel as wrapLanguageModel } from 'ai';
+import { openai } from "@ai-sdk/openai";
+import { experimental_wrapLanguageModel as wrapLanguageModel } from "ai";
 
-import { customMiddleware } from './custom-middleware';
+import { customMiddleware } from "./custom-middleware";
 
 export const customModel = (apiIdentifier: string) => {
   return wrapLanguageModel({
@@ -10,9 +10,7 @@ export const customModel = (apiIdentifier: string) => {
   });
 };
 
-export const imageGenerationModel = openai.image('dall-e-3');
-
-
+export const imageGenerationModel = openai.image("dall-e-3");
 
 export interface Model {
   id: string;
@@ -23,17 +21,17 @@ export interface Model {
 
 export const models: Array<Model> = [
   {
-    id: 'gpt-4o-mini',
-    label: 'GPT 4o mini',
-    apiIdentifier: 'gpt-4o-mini',
-    description: 'Small model for fast, lightweight tasks',
+    id: "gpt-4o-mini",
+    label: "GPT 4o mini",
+    apiIdentifier: "gpt-4o-mini",
+    description: "Small model for fast, lightweight tasks",
   },
   {
-    id: 'gpt-4o',
-    label: 'GPT 4o',
-    apiIdentifier: 'gpt-4o',
-    description: 'For complex, multi-step tasks',
+    id: "gpt-4o",
+    label: "GPT 4o",
+    apiIdentifier: "gpt-4o",
+    description: "For complex, multi-step tasks",
   },
 ];
 
-export const DEFAULT_MODEL_NAME: string = 'gpt-4o-mini';
+export const DEFAULT_MODEL_NAME: string = "gpt-4o-mini";

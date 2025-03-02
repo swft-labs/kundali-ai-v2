@@ -1,0 +1,9 @@
+node_modules
+.expo
+ios
+android
+bun.lock
+.env
+expo-env.d.ts
+tailwind.config.js
+nextjs-ai-chatbot

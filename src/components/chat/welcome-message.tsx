@@ -1,5 +1,5 @@
-import { View } from "react-native";
 import { Text } from "@/components/ui/text";
+import { View } from "react-native";
 
 type WelcomeMessageProps = {
   topic?: string;
@@ -12,7 +12,7 @@ const topicEmojis: Record<string, string> = {
   "Match Compatibility": "🌹",
   "Career and Business": "💼",
   "Health Outlook": "🫀",
-  "Spritual Wellness": "🧘"
+  "Spritual Wellness": "🧘",
 };
 
 export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
@@ -24,9 +24,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
   let welcomeContent = (
     <View className="space-y-4">
       <Text className="text-center leading-7">
-        Welcome to Kundali AI! Your astrological insights are ready.  
-        Let’s dive into your cosmic blueprint and uncover what the universe has in store for you.  
-        What would you like to explore today?
+        Welcome to Kundali AI! Your astrological insights are ready. Let’s dive
+        into your cosmic blueprint and uncover what the universe has in store
+        for you. What would you like to explore today?
       </Text>
     </View>
   );
@@ -38,9 +38,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              The stars are aligned, and I have the answers you seek.  
-              Whether it's love, career, or personal growth—ask away.  
-              Let's decode your destiny. ✨
+              The stars are aligned, and I have the answers you seek. Whether
+              it's love, career, or personal growth—ask away. Let's decode your
+              destiny. ✨
             </Text>
           </View>
         );
@@ -49,9 +49,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Your daily astrological insights are here.  
-              The planetary movements shape your energy—here’s how today unfolds for you.  
-              Let’s align your actions with the cosmos. 🌞
+              Your daily astrological insights are here. The planetary movements
+              shape your energy—here’s how today unfolds for you. Let’s align
+              your actions with the cosmos. 🌞
             </Text>
           </View>
         );
@@ -60,8 +60,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Wondering if you and someone special are truly aligned?  
-              I’ve analyzed your cosmic compatibility—here’s what the stars reveal about your connection. 💕
+              Wondering if you and someone special are truly aligned? I’ve
+              analyzed your cosmic compatibility—here’s what the stars reveal
+              about your connection. 💕
             </Text>
           </View>
         );
@@ -70,9 +71,9 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Success isn’t just about effort—it’s about timing.  
-              The planetary transits reveal when to make bold moves, seize opportunities, and elevate your career.  
-              Let’s chart your path to prosperity. 📈
+              Success isn’t just about effort—it’s about timing. The planetary
+              transits reveal when to make bold moves, seize opportunities, and
+              elevate your career. Let’s chart your path to prosperity. 📈
             </Text>
           </View>
         );
@@ -81,9 +82,10 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Your physical and emotional well-being are influenced by planetary energy.  
-              Here’s what your birth chart says about your health cycles and vitality.  
-              Let’s align your habits with the universe for a healthier you. ❤️‍🩹
+              Your physical and emotional well-being are influenced by planetary
+              energy. Here’s what your birth chart says about your health cycles
+              and vitality. Let’s align your habits with the universe for a
+              healthier you. ❤️‍🩹
             </Text>
           </View>
         );
@@ -92,8 +94,8 @@ export const WelcomeMessage = ({ topic }: WelcomeMessageProps) => {
         welcomeContent = (
           <View className="space-y-4">
             <Text className="text-center leading-7">
-              Your spiritual evolution is written in the stars.  
-              Whether you seek inner peace, guidance, or a deeper connection with the cosmos,  
+              Your spiritual evolution is written in the stars. Whether you seek
+              inner peace, guidance, or a deeper connection with the cosmos,
               here’s how your Kundali can illuminate your path. ✨
             </Text>
           </View>

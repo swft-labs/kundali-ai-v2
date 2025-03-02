@@ -1,6 +1,6 @@
-import { View, Text } from "react-native";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wind, Droplets, Sun, Cloud } from "@/lib/icons";
+import { Cloud, Droplets, Sun, Wind } from "@/lib/icons";
+import { Text, View } from "react-native";
 
 interface WeatherCardProps {
   city: string;

@@ -1,9 +1,8 @@
 import * as v2 from "firebase-functions";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
-import { convertToCoreMessages, streamText } from 'ai';
-import { models, customModel } from "../lib/models";
-
+import { convertToCoreMessages, streamText } from "ai";
+import { customModel, models } from "../lib/models";
 
 export const getChatResponse = v2.https.onRequest(async (request, response) => {
   response.setHeader("Content-Type", "application/json");
@@ -12,7 +11,7 @@ export const getChatResponse = v2.https.onRequest(async (request, response) => {
     console.log(">> Request received");
 
     // Extract messages and modelId from the request body
-    const { messages, modelId = 'gpt-4' } = request.body;
+    const { messages, modelId = "gpt-4" } = request.body;
     console.log(">> Messages:", messages);
 
     // Select the requested model or default to the first available model
@@ -25,14 +24,14 @@ export const getChatResponse = v2.https.onRequest(async (request, response) => {
     const userMessageId = generateUUID();
 
     // Send an initial response containing the user message ID
-    response.write(JSON.stringify({
-      type: 'user-message-id',
-      content: userMessageId, 
-    }) + "\n");
+    response.write(
+      JSON.stringify({
+        type: "user-message-id",
+        content: userMessageId,
+      }) + "\n",
+    );
 
-
-    const systemPrompt = 'You are a helpful assistant.';
-
+    const systemPrompt = "You are a helpful assistant.";
 
     // Stream AI response
     const result = streamText({
@@ -64,4 +63,3 @@ export const getChatResponse = v2.https.onRequest(async (request, response) => {
 function generateUUID() {
   return uuidv4();
 }
-

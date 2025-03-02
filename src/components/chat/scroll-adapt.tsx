@@ -1,10 +1,10 @@
-import { ScrollView } from "react-native";
 import type React from "react";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import {
+  ScrollView,
   useWindowDimensions,
-  type NativeSyntheticEvent,
   type NativeScrollEvent,
+  type NativeSyntheticEvent,
 } from "react-native";
 
 export interface ScrollAdaptRef {

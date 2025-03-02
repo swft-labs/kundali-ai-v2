@@ -1,5 +1,6 @@
 import "@/global.css";
 
+import { useColorScheme } from "@/hooks/useColorScheme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   DarkTheme,
@@ -7,16 +8,14 @@ import {
   Theme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import { Platform } from "react-native";
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { NAV_THEME } from "./constants";
 // import { PortalHost } from "@rn-primitives/portal";
 // import { ThemeToggle } from "@/components/ThemeToggle";
 // import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
-
 
 const LIGHT_THEME: Theme = {
   ...DefaultTheme,
